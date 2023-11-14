@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  place-content: center;
+  padding: 24px 48px;
+  box-sizing: border-box;
+
+  --background-color: #1b244a;
+  --hero-text-color: #eeeeee;
+  --score-background-color: #080001;
+  --score-text-color: #f94f6d;
+  --score-btn-text-color: #9aabd8;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--background-color);
+  width: 100%;
+  height: 60%;
+  box-sizing: inherit;
+}
+
+.container-block {
+  display: flex;
+  flex-direction: column;
+  place-content: space-around;
+}
+
+h3 {
+  color: var(--hero-text-color);
+}
+
+.score {
+  color: var(--score-text-color);
+}
+
+.score-btn-container {
+  display: flex;
+}
+
+.score-btn-container button {
+  background-color: inherit;
+  color: var(--score-btn-text-color);
+  border-radius: 5%;
+  border: 1px solid var(--score-btn-text-color);
+}
