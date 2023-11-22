@@ -41,7 +41,7 @@
     <a href="https://github.com/yujhenchen/basketball-scoreboard"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/yujhenchen/basketball-scoreboard">View Demo</a>
+    <a href="https://jen-basketball-scoreboard.netlify.app/" target=”_blank”>View Demo</a>
     ·
     <a href="https://github.com/yujhenchen/basketball-scoreboard/issues">Report Bug</a>
     ·

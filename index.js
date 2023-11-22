@@ -18,6 +18,7 @@ const guestAddThreeBtn = document.getElementById("guest-add-three-btn");
 const gameOverModelContainer = document.getElementById(
   "game-over-model-container"
 );
+const winnerSpan = document.getElementById("winner-span");
 
 let homeScore = 0;
 let guestScore = 0;
@@ -29,11 +30,23 @@ let isGameEnd = false;
 
 let checkGameEndTimer = setInterval(showGameOverModel, 1000);
 
+function setWinnerText() {
+  const winner =
+    homeScore > guestScore
+      ? "HOME"
+      : homeScore < guestScore
+      ? "GUEST"
+      : "Everyone";
+
+  winnerSpan.textContent = winner;
+}
+
 function showGameOverModel() {
   if (isGameEnd) clearInterval(checkGameEndTimer);
   else {
     if (remainingTime === 0) {
       gameOverModelContainer.style.display = "flex";
+      setWinnerText();
       clearInterval(checkGameEndTimer);
     }
   }
