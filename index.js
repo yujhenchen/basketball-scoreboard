@@ -46,6 +46,7 @@ function resetTimer() {
   return () => {
     clearInterval(timerId);
     timerId = setInterval(countDown, timerInterval);
+    clearInterval(checkGameEndTimer);
     checkGameEndTimer = setInterval(showGameOverModel, 1000);
   };
 }
