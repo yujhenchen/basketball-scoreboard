@@ -45,7 +45,8 @@ function showGameOverModel() {
   if (isGameEnd) clearInterval(checkGameEndTimer);
   else {
     if (remainingTime === 0) {
-      gameOverModelContainer.style.display = "flex";
+      gameOverModelContainer.style.top = "0px";
+      gameOverModelContainer.style.left = "0px";
       setWinnerText();
       clearInterval(checkGameEndTimer);
     }
@@ -85,7 +86,8 @@ function resetGame(isEnd) {
   render();
 }
 gameOverModelContainer.addEventListener("click", () => {
-  gameOverModelContainer.style.display = "none";
+  gameOverModelContainer.style.top = "-9999px";
+  gameOverModelContainer.style.left = "-9999px";
 });
 
 newGameBtn.addEventListener("click", () => {

@@ -201,6 +201,30 @@ After setting `margin: 0;`, the text is still not vertically centered in the `<p
 Further study
 
 
+### Entire page flicks when the game is ended, and before the popup model is shown
+The full view port model container CSS display property is from none to flex?
+
+#### Solution
+Instead of changing the display from "none" to "flex", use the default display and change the layout top and left from `top: -9999px;` and `left: -9999px;` to `top: 0px;` and `left: 0px;`
+
+When the model is hidden
+```
+#game-over-model-container {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+```
+
+When shows the model
+```
+#game-over-model-container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -250,6 +274,7 @@ Project Link: [https://github.com/yujhenchen/basketball-scoreboard](https://gith
 * [setInterval() global function](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)
 * [Scrimba](https://scrimba.com/)
 * [Animate.css](https://github.com/animate-css/animate.css)
+* [Places it’s tempting to use `display: none;`, but don’t](https://css-tricks.com/places-its-tempting-to-use-display-none-but-dont/)
 <!-- * [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/tree/master) -->
 
 
