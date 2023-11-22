@@ -44,19 +44,14 @@ h3 {
   height: 120px;
   place-items: center;
   justify-content: center;
-  /* position: relative; */
 }
 
 .score {
   color: var(--score-text-color);
   font-family: "Cursed Timer ULiL", sans-serif;
   font-size: 90px;
-  margin: 0;
-  /* vertical-align: middle;  */
-  /* display: flex; */
-  /* position: absolute;
-  top: 50%;
-  transform: translateY(-50%); */
+  margin: 0px;
+  padding: 0px;
 }
 
 .score-btn-container {
