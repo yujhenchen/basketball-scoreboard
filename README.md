@@ -82,7 +82,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## 💡About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
@@ -108,7 +108,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## ✈️ Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
@@ -142,7 +142,7 @@ This is an example of how to list things you need to use the software and how to
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## 🛠️ Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
@@ -153,7 +153,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 <!-- ROADMAP -->
-## Roadmap
+## 🗺️ Roadmap
 
 - [ ] Feature 1
 - [ ] Feature 2
@@ -167,7 +167,7 @@ See the [open issues](https://github.com/yujhenchen/basketball-scoreboard/issues
 
 
 <!-- ISSUES AND SOLUTIONS -->
-## Issues and solutions
+## 🧭 Issues and solutions
 
 ### `<p>` tag overflows from its flex parent
 
@@ -221,7 +221,7 @@ Don't forget to give the project a star! Thanks again!
 
 
 <!-- LICENSE -->
-## License
+## 🌱 License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
@@ -230,7 +230,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 <!-- CONTACT -->
-## Contact
+## ☎️ Contact
 
 <!-- Jen Chen - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com -->
 Jen Chen
@@ -242,7 +242,7 @@ Project Link: [https://github.com/yujhenchen/basketball-scoreboard](https://gith
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## 👏 Acknowledgments
 
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 * [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/tree/master)
