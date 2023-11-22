@@ -13,6 +13,10 @@ body {
   --score-background-color: #080001;
   --score-text-color: #f94f6d;
   --score-btn-text-color: #9aabd8;
+  --very-large-font-size: 90px;
+  --large-font-size: 40px;
+  --middle-font-size: 24px;
+  --small-font-size: 16px;
 }
 
 .container {
@@ -34,7 +38,21 @@ body {
 h3 {
   color: var(--hero-text-color);
   font-weight: bold;
-  font-size: 40px;
+  font-size: var(--large-font-size);
+}
+
+button {
+  color: var(--score-btn-text-color);
+  border: 1px solid var(--score-btn-text-color);
+  font-family: "Cursed Timer ULiL", sans-serif;
+  background-color: inherit;
+  border-radius: 5%;
+  text-align: center;
+}
+
+p {
+  margin: 0px;
+  padding: 0px;
 }
 
 .score-container {
@@ -49,9 +67,7 @@ h3 {
 .score {
   color: var(--score-text-color);
   font-family: "Cursed Timer ULiL", sans-serif;
-  font-size: 90px;
-  margin: 0px;
-  padding: 0px;
+  font-size: var(--very-large-font-size);
 }
 
 .score-btn-container {
@@ -62,13 +78,32 @@ h3 {
 }
 
 .score-btn-container button {
-  color: var(--score-btn-text-color);
-  border: 1px solid var(--score-btn-text-color);
-  font-family: "Cursed Timer ULiL", sans-serif;
-  background-color: inherit;
-  border-radius: 5%;
   aspect-ratio: 1 / 1;
   width: 45px;
-  font-size: 18px;
-  text-align: center;
+  font-size: var(--small-font-size);
+}
+
+.action-btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--hero-text-color);
+}
+
+.action-btn-container button {
+  padding: 16px;
+  font-size: var(--middle-font-size);
+  font-weight: bold;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--middle-font-size);
+  font-weight: bold;
+  padding: 16px;
+}
+
+#remaining-time {
+  font-size: var(--large-font-size);
 }
