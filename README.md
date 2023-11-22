@@ -154,10 +154,13 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [x] Set scores (set state variables, addEventListener)
+- [x] Reset the game
+- [x] Count down timer (setInterval and clearInterval)
+- [x] Responsive web design (RWD)
+- [ ] Refactor codes
+    - [ ] Create a map to map button ids and corresponding scores
+    - [ ] Wrap scores, timer id, and time variables into a game object
 
 See the [open issues](https://github.com/yujhenchen/basketball-scoreboard/issues) for a full list of proposed features (and known issues).
 
@@ -241,11 +244,12 @@ Project Link: [https://github.com/yujhenchen/basketball-scoreboard](https://gith
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-<!-- * [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/tree/master) -->
 * [What is the default margin value of p tag?](https://stackoverflow.com/questions/20850594/what-is-the-default-margin-value-of-p-tag)
 * [[CSS] - How to remove the margin from a p element using CSS](https://www.shecodes.io/athena/44275-how-to-remove-the-margin-from-a-p-element-using-css)
 * [setInterval() global function](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)
 * [Scrimba](https://scrimba.com/)
+<!-- * [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/tree/master) -->
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
