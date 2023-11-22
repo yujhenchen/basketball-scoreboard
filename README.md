@@ -38,3 +38,4 @@ Further study
 # Reference
 1. https://stackoverflow.com/questions/20850594/what-is-the-default-margin-value-of-p-tag
 2. https://www.shecodes.io/athena/44275-how-to-remove-the-margin-from-a-p-element-using-css
+3. https://developer.mozilla.org/en-US/docs/Web/API/setInterval

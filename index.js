@@ -15,12 +15,22 @@ const guestAddThreeBtn = document.getElementById("guest-add-three-btn");
 
 let homeScore = 0;
 let guestScore = 0;
-let remainingTime = 0;
+const defaultRemainingTime = 60;
+let remainingTime = defaultRemainingTime;
+const timerInterval = 1000;
+
+const timerId = setInterval(countDown, timerInterval);
+
+function countDown() {
+  remainingTime -= 1;
+  render();
+}
 
 newGameBtn.addEventListener("click", () => {
   homeScore = 0;
   guestScore = 0;
-  remainingTime = 0;
+  remainingTime = defaultRemainingTime;
+  clearInterval(timerId);
   render();
 });
 
