@@ -4,6 +4,7 @@ const remainingTimeElement = document.getElementById("remaining-time");
 
 // buttons
 const newGameBtn = document.getElementById("new-game-btn");
+const endGameBtn = document.getElementById("end-game-btn");
 
 const homeAddOneBtn = document.getElementById("home-add-one-btn");
 const homeAddTwoBtn = document.getElementById("home-add-two-btn");
@@ -16,22 +17,44 @@ const guestAddThreeBtn = document.getElementById("guest-add-three-btn");
 let homeScore = 0;
 let guestScore = 0;
 const defaultRemainingTime = 60;
-let remainingTime = defaultRemainingTime;
 const timerInterval = 1000;
+let remainingTime = defaultRemainingTime;
+let timerId;
 
-const timerId = setInterval(countDown, timerInterval);
+const newTimer = resetTimer();
+
+function resetTimer() {
+  timerId = setInterval(countDown, timerInterval);
+  return () => {
+    clearInterval(timerId);
+    timerId = setInterval(countDown, timerInterval);
+  };
+}
 
 function countDown() {
   remainingTime -= 1;
   render();
 }
 
-newGameBtn.addEventListener("click", () => {
+function resetGame(isEnd) {
   homeScore = 0;
   guestScore = 0;
-  remainingTime = defaultRemainingTime;
-  clearInterval(timerId);
+  if (isEnd) {
+    remainingTime = 0;
+    clearInterval(timerId);
+  } else {
+    remainingTime = defaultRemainingTime;
+    newTimer();
+  }
   render();
+}
+
+newGameBtn.addEventListener("click", () => {
+  resetGame(false);
+});
+
+endGameBtn.addEventListener("click", () => {
+  resetGame(true);
 });
 
 // home
