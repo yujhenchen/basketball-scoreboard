@@ -158,6 +158,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Reset the game
 - [x] Count down timer (setInterval and clearInterval)
 - [x] Responsive web design (RWD)
+- [x] Popup winner animation after the game is ended (using Animate.css)
 - [ ] Refactor codes
     - [ ] Create a map to map button ids and corresponding scores
     - [ ] Wrap scores, timer id, and time variables into a game object
@@ -248,6 +249,7 @@ Project Link: [https://github.com/yujhenchen/basketball-scoreboard](https://gith
 * [[CSS] - How to remove the margin from a p element using CSS](https://www.shecodes.io/athena/44275-how-to-remove-the-margin-from-a-p-element-using-css)
 * [setInterval() global function](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)
 * [Scrimba](https://scrimba.com/)
+* [Animate.css](https://github.com/animate-css/animate.css)
 <!-- * [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/tree/master) -->
 
 

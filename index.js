@@ -14,12 +14,30 @@ const guestAddOneBtn = document.getElementById("guest-add-one-btn");
 const guestAddTwoBtn = document.getElementById("guest-add-two-btn");
 const guestAddThreeBtn = document.getElementById("guest-add-three-btn");
 
+// model
+const gameOverModelContainer = document.getElementById(
+  "game-over-model-container"
+);
+
 let homeScore = 0;
 let guestScore = 0;
 const defaultRemainingTime = 10;
 const timerInterval = 1000;
 let remainingTime = defaultRemainingTime;
 let timerId;
+let isGameEnd = false;
+
+let checkGameEndTimer = setInterval(showGameOverModel, 1000);
+
+function showGameOverModel() {
+  if (isGameEnd) clearInterval(checkGameEndTimer);
+  else {
+    if (remainingTime === 0) {
+      gameOverModelContainer.style.display = "flex";
+      clearInterval(checkGameEndTimer);
+    }
+  }
+}
 
 const newTimer = resetTimer();
 
@@ -28,6 +46,7 @@ function resetTimer() {
   return () => {
     clearInterval(timerId);
     timerId = setInterval(countDown, timerInterval);
+    checkGameEndTimer = setInterval(showGameOverModel, 1000);
   };
 }
 
@@ -42,13 +61,18 @@ function resetGame(isEnd) {
   guestScore = 0;
   if (isEnd) {
     remainingTime = 0;
+    isGameEnd = true;
     clearInterval(timerId);
   } else {
     remainingTime = defaultRemainingTime;
+    isGameEnd = false;
     newTimer();
   }
   render();
 }
+gameOverModelContainer.addEventListener("click", () => {
+  gameOverModelContainer.style.display = "none";
+});
 
 newGameBtn.addEventListener("click", () => {
   resetGame(false);
