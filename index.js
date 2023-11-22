@@ -16,7 +16,7 @@ const guestAddThreeBtn = document.getElementById("guest-add-three-btn");
 
 let homeScore = 0;
 let guestScore = 0;
-const defaultRemainingTime = 60;
+const defaultRemainingTime = 10;
 const timerInterval = 1000;
 let remainingTime = defaultRemainingTime;
 let timerId;
@@ -32,7 +32,8 @@ function resetTimer() {
 }
 
 function countDown() {
-  remainingTime -= 1;
+  if (remainingTime <= 0) clearInterval(timerId);
+  else remainingTime -= 1;
   render();
 }
 
