@@ -1,4 +1,3 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
@@ -30,14 +29,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/yujhenchen/basketball-scoreboard">
+  <!-- <a href="https://github.com/yujhenchen/basketball-scoreboard">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Basketball Scoreboard</h3>
 
   <p align="center">
-    project_description
+    My solo project - Basketball Scoreboard (from The Frontend Developer Career Path of Scrimba)
     <br />
     <a href="https://github.com/yujhenchen/basketball-scoreboard"><strong>Explore the docs »</strong></a>
     <br />
@@ -84,26 +83,27 @@
 <!-- ABOUT THE PROJECT -->
 ## 💡About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `basketball-scoreboard`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+<!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `basketball-scoreboard`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description` -->
+My solo project - Basketball Scoreboard (from The Frontend Developer Career Path of Scrimba).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
+<!-- 
 ### Built With
 
 * [![Next][Next.js]][Next-url]
-<!-- * [![React][React.js]][React-url]
+* [![React][React.js]][React-url]
 * [![Vue][Vue.js]][Vue-url]
 * [![Angular][Angular.io]][Angular-url]
 * [![Svelte][Svelte.dev]][Svelte-url]
 * [![Laravel][Laravel.com]][Laravel-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url] -->
+* [![JQuery][JQuery.com]][JQuery-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
@@ -246,9 +246,10 @@ Project Link: [https://github.com/yujhenchen/basketball-scoreboard](https://gith
 
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 * [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/tree/master)
-* [What is the default margin value of <p> tag? [duplicate]](https://stackoverflow.com/questions/20850594/what-is-the-default-margin-value-of-p-tag)
-* [[CSS] - How to remove the margin from a <p> element using CSS](https://www.shecodes.io/athena/44275-how-to-remove-the-margin-from-a-p-element-using-css)
+* [What is the default margin value of p tag?](https://stackoverflow.com/questions/20850594/what-is-the-default-margin-value-of-p-tag)
+* [[CSS] - How to remove the margin from a p element using CSS](https://www.shecodes.io/athena/44275-how-to-remove-the-margin-from-a-p-element-using-css)
 * [setInterval() global function](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)
+* [Scrimba](https://scrimba.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -285,3 +286,4 @@ Project Link: [https://github.com/yujhenchen/basketball-scoreboard](https://gith
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+[JavaScript]: https://img.shields.io/badge/logo-javascript-blue?logo=javascript
