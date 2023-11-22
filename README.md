@@ -57,21 +57,21 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
+      <!-- <ul>
         <li><a href="#built-with">Built With</a></li>
-      </ul>
+      </ul> -->
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <!-- <li><a href="#prerequisites">Prerequisites</a></li> -->
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <!-- <li><a href="#usage">Usage</a></li> -->
     <li><a href="#roadmap">Roadmap</a></li>
     <!-- <li><a href="#contributing">Contributing</a></li> -->
-    <li><a href="#roadmap">Issues and solutions</a></li>
+    <li><a href="#issues-and-solutions">Issues and solutions</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -81,8 +81,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## 💡About The Project
-
+## About The Project
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
 <!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `basketball-scoreboard`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description` -->
@@ -108,8 +107,7 @@ My solo project - Basketball Scoreboard (from The Frontend Developer Career Path
 
 
 <!-- GETTING STARTED -->
-## ✈️ Getting Started
-
+## Getting Started
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
@@ -122,6 +120,7 @@ This is an example of how to list things you need to use the software and how to
   ``` -->
 
 ### Installation
+Right-click on the index.html file and select "Open with" and select the target browser.
 <!-- 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
@@ -142,18 +141,18 @@ This is an example of how to list things you need to use the software and how to
 
 
 <!-- USAGE EXAMPLES -->
-## 🛠️ Usage
+<!-- ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
 <!-- ROADMAP -->
-## 🗺️ Roadmap
+## Roadmap
 
 - [ ] Feature 1
 - [ ] Feature 2
@@ -167,7 +166,7 @@ See the [open issues](https://github.com/yujhenchen/basketball-scoreboard/issues
 
 
 <!-- ISSUES AND SOLUTIONS -->
-## 🧭 Issues and solutions
+## Issues and solutions
 
 ### `<p>` tag overflows from its flex parent
 
@@ -221,8 +220,7 @@ Don't forget to give the project a star! Thanks again!
 
 
 <!-- LICENSE -->
-## 🌱 License
-
+## License
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -230,8 +228,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 <!-- CONTACT -->
-## ☎️ Contact
-
+## Contact
 <!-- Jen Chen - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com -->
 Jen Chen
 
@@ -242,10 +239,9 @@ Project Link: [https://github.com/yujhenchen/basketball-scoreboard](https://gith
 
 
 <!-- ACKNOWLEDGMENTS -->
-## 👏 Acknowledgments
-
+## Acknowledgments
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-* [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/tree/master)
+<!-- * [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/tree/master) -->
 * [What is the default margin value of p tag?](https://stackoverflow.com/questions/20850594/what-is-the-default-margin-value-of-p-tag)
 * [[CSS] - How to remove the margin from a p element using CSS](https://www.shecodes.io/athena/44275-how-to-remove-the-margin-from-a-p-element-using-css)
 * [setInterval() global function](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)
