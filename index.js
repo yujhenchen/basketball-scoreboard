@@ -10,8 +10,7 @@ const gameData = {
   defaultRemainingTime: 10,
   timerInterval: 1000,
   remainingTime: 10,
-  timerId: -1,
-  isGameEnd: false,
+  hasShownGameOverModel: false,
 };
 Object.preventExtensions(gameData);
 
@@ -42,78 +41,79 @@ scoreButtons.forEach((button) => {
   });
 });
 
-let checkGameEndTimer = setInterval(showGameOverModel, 1000);
-
-function setWinnerText() {
-  const winner =
-    gameData.homeScore > gameData.guestScore
-      ? PLAYER_NAME.HOME
-      : gameData.homeScore < gameData.guestScore
-      ? PLAYER_NAME.GUEST
-      : PLAYER_NAME.EVERYONE;
-
-  winnerSpan.textContent = winner;
-}
-
-function showGameOverModel() {
-  if (gameData.isGameEnd) clearInterval(checkGameEndTimer);
-  else {
-    if (gameData.remainingTime === 0) {
-      gameOverModelContainer.style.top = CSS_LAYOUT_VALUE.DEFAULT;
-      gameOverModelContainer.style.left = CSS_LAYOUT_VALUE.DEFAULT;
-      setWinnerText();
-      clearInterval(checkGameEndTimer);
-    }
-  }
-}
-
-const newTimer = resetTimer();
-
-function resetTimer() {
-  gameData.timerId = setInterval(countDown, gameData.timerInterval);
-  return () => {
-    clearInterval(gameData.timerId);
-    gameData.timerId = setInterval(countDown, gameData.timerInterval);
-    clearInterval(checkGameEndTimer);
-    checkGameEndTimer = setInterval(showGameOverModel, gameData.timerInterval);
-  };
-}
-
-function countDown() {
-  if (gameData.remainingTime <= 0) clearInterval(gameData.timerId);
-  else gameData.remainingTime -= 1;
-  render();
-}
-
-function resetGame(isEnd) {
-  gameData.homeScore = 0;
-  gameData.guestScore = 0;
-  if (isEnd) {
-    gameData.remainingTime = 0;
-    gameData.isGameEnd = true;
-    clearInterval(gameData.timerId);
-  } else {
-    gameData.remainingTime = gameData.defaultRemainingTime;
-    gameData.isGameEnd = false;
-    newTimer();
-  }
-  render();
-}
 gameOverModelContainer.addEventListener("click", () => {
   gameOverModelContainer.style.top = CSS_LAYOUT_VALUE.OUT_OF_SCREEN;
   gameOverModelContainer.style.left = CSS_LAYOUT_VALUE.OUT_OF_SCREEN;
 });
 
 newGameBtn.addEventListener("click", () => {
-  resetGame(false);
+  newGame();
+  render();
 });
 
 endGameBtn.addEventListener("click", () => {
-  resetGame(true);
+  endGame();
+  render();
 });
+
+let gameTimerId = setInterval(playGame, gameData.timerInterval);
+
+function playGame() {
+  gameData.remainingTime -= 1;
+  if (gameData.remainingTime === 0) {
+    if (!gameData.hasShownGameOverModel) {
+      showGameOverModel();
+      gameData.hasShownGameOverModel = true;
+    }
+    clearInterval(gameTimerId);
+  }
+  render();
+}
+
+function newGame() {
+  // clean all scores
+  // remaining time to default value
+  // restart the timer
+  // has shown game over = false
+  // enable score buttons
+  cleanScores();
+  gameData.remainingTime = gameData.defaultRemainingTime;
+  clearInterval(gameTimerId);
+  gameTimerId = setInterval(playGame, gameData.timerInterval);
+  gameData.hasShownGameOverModel = false;
+}
+
+function endGame() {
+  // clean all scores
+  // remaining time to 0
+  // disable score buttons
+  cleanScores();
+  gameData.remainingTime = 0;
+  clearInterval(gameTimerId);
+}
+
+function cleanScores() {
+  gameData.homeScore = 0;
+  gameData.guestScore = 0;
+}
+
+function getWinnerText() {
+  return gameData.homeScore > gameData.guestScore
+    ? PLAYER_NAME.HOME
+    : gameData.homeScore < gameData.guestScore
+    ? PLAYER_NAME.GUEST
+    : PLAYER_NAME.EVERYONE;
+}
+
+function showGameOverModel() {
+  gameOverModelContainer.style.top = CSS_LAYOUT_VALUE.DEFAULT;
+  gameOverModelContainer.style.left = CSS_LAYOUT_VALUE.DEFAULT;
+  winnerSpan.textContent = getWinnerText();
+}
 
 function render() {
   homeScoreElement.textContent = gameData.homeScore;
   guestScoreElement.textContent = gameData.guestScore;
   remainingTimeElement.textContent = gameData.remainingTime;
 }
+render();
