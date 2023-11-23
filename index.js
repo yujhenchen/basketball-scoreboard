@@ -1,5 +1,9 @@
 "use strict";
 
+import { PLAYER_NAME } from "./constants.js";
+import { CSS_LAYOUT_VALUE } from "./constants.js";
+import { buttonIdScoreMap } from "./constants.js";
+
 const gameData = {
   homeScore: 0,
   guestScore: 0,
@@ -10,12 +14,6 @@ const gameData = {
   isGameEnd: false,
 };
 Object.preventExtensions(gameData);
-
-const buttonIdScoreMap = new Map([
-  ["one", 1],
-  ["two", 2],
-  ["three", 3],
-]);
 
 const homeScoreElement = document.getElementById("home-score");
 const guestScoreElement = document.getElementById("guest-score");
@@ -49,10 +47,10 @@ let checkGameEndTimer = setInterval(showGameOverModel, 1000);
 function setWinnerText() {
   const winner =
     gameData.homeScore > gameData.guestScore
-      ? "HOME"
+      ? PLAYER_NAME.HOME
       : gameData.homeScore < gameData.guestScore
-      ? "GUEST"
-      : "Everyone";
+      ? PLAYER_NAME.GUEST
+      : PLAYER_NAME.EVERYONE;
 
   winnerSpan.textContent = winner;
 }
@@ -61,8 +59,8 @@ function showGameOverModel() {
   if (gameData.isGameEnd) clearInterval(checkGameEndTimer);
   else {
     if (gameData.remainingTime === 0) {
-      gameOverModelContainer.style.top = "0px";
-      gameOverModelContainer.style.left = "0px";
+      gameOverModelContainer.style.top = CSS_LAYOUT_VALUE.DEFAULT;
+      gameOverModelContainer.style.left = CSS_LAYOUT_VALUE.DEFAULT;
       setWinnerText();
       clearInterval(checkGameEndTimer);
     }
@@ -77,7 +75,7 @@ function resetTimer() {
     clearInterval(gameData.timerId);
     gameData.timerId = setInterval(countDown, gameData.timerInterval);
     clearInterval(checkGameEndTimer);
-    checkGameEndTimer = setInterval(showGameOverModel, 1000);
+    checkGameEndTimer = setInterval(showGameOverModel, gameData.timerInterval);
   };
 }
 
@@ -102,8 +100,8 @@ function resetGame(isEnd) {
   render();
 }
 gameOverModelContainer.addEventListener("click", () => {
-  gameOverModelContainer.style.top = "-9999px";
-  gameOverModelContainer.style.left = "-9999px";
+  gameOverModelContainer.style.top = CSS_LAYOUT_VALUE.OUT_OF_SCREEN;
+  gameOverModelContainer.style.left = CSS_LAYOUT_VALUE.OUT_OF_SCREEN;
 });
 
 newGameBtn.addEventListener("click", () => {

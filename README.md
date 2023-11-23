@@ -164,7 +164,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
     - [x] Remove duplicated codes in addEventListener
     - [ ] Wrap scores, timer id, and time variables into a game data class
     - [ ] Refactor end game and reset game codes for readability
-    - [ ] Strings to const variables
+    - [x] Strings to const variables
     - [ ] Error handling
 
 See the [open issues](https://github.com/yujhenchen/basketball-scoreboard/issues) for a full list of proposed features (and known issues).
