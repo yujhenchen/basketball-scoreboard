@@ -1,3 +1,22 @@
+"use strict";
+
+const gameData = {
+  homeScore: 0,
+  guestScore: 0,
+  defaultRemainingTime: 10,
+  timerInterval: 1000,
+  remainingTime: 10,
+  timerId: -1,
+  isGameEnd: false,
+};
+Object.preventExtensions(gameData);
+
+const buttonIdScoreMap = new Map([
+  ["one", 1],
+  ["two", 2],
+  ["three", 3],
+]);
+
 const homeScoreElement = document.getElementById("home-score");
 const guestScoreElement = document.getElementById("guest-score");
 const remainingTimeElement = document.getElementById("remaining-time");
@@ -6,35 +25,32 @@ const remainingTimeElement = document.getElementById("remaining-time");
 const newGameBtn = document.getElementById("new-game-btn");
 const endGameBtn = document.getElementById("end-game-btn");
 
-const homeAddOneBtn = document.getElementById("home-add-one-btn");
-const homeAddTwoBtn = document.getElementById("home-add-two-btn");
-const homeAddThreeBtn = document.getElementById("home-add-three-btn");
-
-const guestAddOneBtn = document.getElementById("guest-add-one-btn");
-const guestAddTwoBtn = document.getElementById("guest-add-two-btn");
-const guestAddThreeBtn = document.getElementById("guest-add-three-btn");
-
 // model
 const gameOverModelContainer = document.getElementById(
   "game-over-model-container"
 );
 const winnerSpan = document.getElementById("winner-span");
 
-let homeScore = 0;
-let guestScore = 0;
-const defaultRemainingTime = 10;
-const timerInterval = 1000;
-let remainingTime = defaultRemainingTime;
-let timerId;
-let isGameEnd = false;
+const scoreButtons = document.querySelectorAll("button[id*='-score-btn-']");
+
+scoreButtons.forEach((button) => {
+  const idPartArray = button.id.split("-");
+  const toAddScore = buttonIdScoreMap.get(idPartArray[idPartArray.length - 1]);
+  const toAddPlayer = idPartArray[0];
+  button.addEventListener("click", () => {
+    if (toAddPlayer === "home") gameData.homeScore += toAddScore;
+    else gameData.guestScore += toAddScore;
+    render();
+  });
+});
 
 let checkGameEndTimer = setInterval(showGameOverModel, 1000);
 
 function setWinnerText() {
   const winner =
-    homeScore > guestScore
+    gameData.homeScore > gameData.guestScore
       ? "HOME"
-      : homeScore < guestScore
+      : gameData.homeScore < gameData.guestScore
       ? "GUEST"
       : "Everyone";
 
@@ -42,9 +58,9 @@ function setWinnerText() {
 }
 
 function showGameOverModel() {
-  if (isGameEnd) clearInterval(checkGameEndTimer);
+  if (gameData.isGameEnd) clearInterval(checkGameEndTimer);
   else {
-    if (remainingTime === 0) {
+    if (gameData.remainingTime === 0) {
       gameOverModelContainer.style.top = "0px";
       gameOverModelContainer.style.left = "0px";
       setWinnerText();
@@ -56,31 +72,31 @@ function showGameOverModel() {
 const newTimer = resetTimer();
 
 function resetTimer() {
-  timerId = setInterval(countDown, timerInterval);
+  gameData.timerId = setInterval(countDown, gameData.timerInterval);
   return () => {
-    clearInterval(timerId);
-    timerId = setInterval(countDown, timerInterval);
+    clearInterval(gameData.timerId);
+    gameData.timerId = setInterval(countDown, gameData.timerInterval);
     clearInterval(checkGameEndTimer);
     checkGameEndTimer = setInterval(showGameOverModel, 1000);
   };
 }
 
 function countDown() {
-  if (remainingTime <= 0) clearInterval(timerId);
-  else remainingTime -= 1;
+  if (gameData.remainingTime <= 0) clearInterval(gameData.timerId);
+  else gameData.remainingTime -= 1;
   render();
 }
 
 function resetGame(isEnd) {
-  homeScore = 0;
-  guestScore = 0;
+  gameData.homeScore = 0;
+  gameData.guestScore = 0;
   if (isEnd) {
-    remainingTime = 0;
-    isGameEnd = true;
-    clearInterval(timerId);
+    gameData.remainingTime = 0;
+    gameData.isGameEnd = true;
+    clearInterval(gameData.timerId);
   } else {
-    remainingTime = defaultRemainingTime;
-    isGameEnd = false;
+    gameData.remainingTime = gameData.defaultRemainingTime;
+    gameData.isGameEnd = false;
     newTimer();
   }
   render();
@@ -98,40 +114,8 @@ endGameBtn.addEventListener("click", () => {
   resetGame(true);
 });
 
-// home
-homeAddOneBtn.addEventListener("click", () => {
-  homeScore += 1;
-  render();
-});
-
-homeAddTwoBtn.addEventListener("click", () => {
-  homeScore += 2;
-  render();
-});
-
-homeAddThreeBtn.addEventListener("click", () => {
-  homeScore += 3;
-  render();
-});
-
-// guest
-guestAddOneBtn.addEventListener("click", () => {
-  guestScore += 1;
-  render();
-});
-
-guestAddTwoBtn.addEventListener("click", () => {
-  guestScore += 2;
-  render();
-});
-
-guestAddThreeBtn.addEventListener("click", () => {
-  guestScore += 3;
-  render();
-});
-
 function render() {
-  homeScoreElement.textContent = homeScore;
-  guestScoreElement.textContent = guestScore;
-  remainingTimeElement.textContent = remainingTime;
+  homeScoreElement.textContent = gameData.homeScore;
+  guestScoreElement.textContent = gameData.guestScore;
+  remainingTimeElement.textContent = gameData.remainingTime;
 }
