@@ -57,9 +57,9 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <!-- <ul>
+      <ul>
         <li><a href="#built-with">Built With</a></li>
-      </ul> -->
+      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -90,19 +90,14 @@ My solo project - Basketball Scoreboard (from The Frontend Developer Career Path
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-<!-- 
+
 ### Built With
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* [![JavaScript]][JavaScript]
+* [![CSS3]][CSS3]
+* [![HTML5]][HTML5]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -359,3 +354,5 @@ Project Link: [https://github.com/yujhenchen/basketball-scoreboard](https://gith
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
 [JavaScript]: https://img.shields.io/badge/logo-javascript-blue?logo=javascript
+[CSS3]: https://img.shields.io/badge/logo-css3-blue?logo=css3
+[HTML5]: https://img.shields.io/badge/logo-html5-blue?logo=html5
