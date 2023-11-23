@@ -11,6 +11,7 @@ const gameData = {
   timerInterval: 1000,
   remainingTime: 10,
   hasShownGameOverModel: false,
+  gameTimerID: -1,
 };
 Object.preventExtensions(gameData);
 
@@ -56,7 +57,17 @@ endGameBtn.addEventListener("click", () => {
   render();
 });
 
-let gameTimerId = setInterval(playGame, gameData.timerInterval);
+function resetGameTimer() {
+  gameData.gameTimerID = setInterval(playGame, gameData.timerInterval);
+  return (isGameEnded = true) => {
+    clearInterval(gameData.gameTimerID);
+    if (!isGameEnded) {
+      gameData.gameTimerID = setInterval(playGame, gameData.timerInterval);
+    }
+  };
+}
+
+const endGameTimer = resetGameTimer();
 
 function playGame() {
   gameData.remainingTime -= 1;
@@ -65,31 +76,22 @@ function playGame() {
       showGameOverModel();
       gameData.hasShownGameOverModel = true;
     }
-    clearInterval(gameTimerId);
+    endGameTimer();
   }
   render();
 }
 
 function newGame() {
-  // clean all scores
-  // remaining time to default value
-  // restart the timer
-  // has shown game over = false
-  // enable score buttons
   cleanScores();
   gameData.remainingTime = gameData.defaultRemainingTime;
-  clearInterval(gameTimerId);
-  gameTimerId = setInterval(playGame, gameData.timerInterval);
+  endGameTimer(false);
   gameData.hasShownGameOverModel = false;
 }
 
 function endGame() {
-  // clean all scores
-  // remaining time to 0
-  // disable score buttons
   cleanScores();
   gameData.remainingTime = 0;
-  clearInterval(gameTimerId);
+  endGameTimer();
 }
 
 function cleanScores() {

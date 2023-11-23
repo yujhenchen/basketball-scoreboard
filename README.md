@@ -159,11 +159,12 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Count down timer (setInterval and clearInterval)
 - [x] Responsive web design (RWD)
 - [x] Popup winner animation after the game is ended (using Animate.css)
+- [ ] Disable score buttons after the game is over
 - [ ] Add Unit tests
 - [ ] Refactor codes
     - [x] Remove duplicated codes in addEventListener
     - [ ] Wrap scores, timer id, and time variables into a game data class
-    - [ ] Refactor end game and reset game codes for readability
+    - [x] Refactor end game and reset game codes for readability
     - [x] Strings to const variables
     - [ ] Error handling
 
@@ -227,6 +228,46 @@ When shows the model
   top: 0px;
   left: 0px;
 }
+```
+
+### It might be  difficult to control the timer from setInterval in the JS file
+When set the timer as below, it is possible to forget to invoke clearInterval to cancels the timer.
+```
+let gameTimerId = setInterval(playGame, gameData.timerInterval);
+```
+
+#### Solution
+Wrap the setting and clearing timer into a function, and return a function to cancel the timer, with a parameter to determine whether the timer needs to be restarted.
+```
+function resetGameTimer() {
+  gameData.gameTimerID = setInterval(playGame, gameData.timerInterval);
+  return (isGameEnded = true) => {
+    clearInterval(gameData.gameTimerID);
+    if (!isGameEnded) {
+      gameData.gameTimerID = setInterval(playGame, gameData.timerInterval);
+    }
+  };
+}
+```
+
+Use a shared variable as timer variable
+```
+gameData.gameTimerID
+```
+
+Call the function and assign the returned function to a variable to control the timer later (the timer is already started after calling the `resetGameTimer` function)
+```
+const endGameTimer = resetGameTimer();
+```
+
+Cancel the timer
+```
+endGameTimer();
+```
+
+Restart the timer
+```
+endGameTimer(false);
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
