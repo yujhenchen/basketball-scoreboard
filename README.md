@@ -85,7 +85,7 @@
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
 <!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `basketball-scoreboard`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description` -->
-My solo project - Basketball Scoreboard (from The Frontend Developer Career Path of Scrimba).
+My solo project - Basketball Scoreboard. Built with Vanilla JavaScript and is powered by the Figma design resources from The Frontend Developer Career Path on Scrimba. The scoreboard includes a countdown feature that utilizes setInterval to track game time dynamically. To ensure efficient management of game-related data, I've applied the Singleton Design Pattern.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -155,12 +155,13 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Responsive web design (RWD)
 - [x] Popup winner animation after the game is ended (using Animate.css)
 - [ ] Disable score buttons after the game is over
+- [ ] Use ESLint and Stylelint
 - [ ] Add Unit tests
 - [ ] Refactor codes
     - [x] Remove duplicated codes in addEventListener
-    - [ ] Wrap scores, timer id, and time variables into a game data class
     - [x] Refactor end game and reset game codes for readability
     - [x] Strings to const variables
+    - [x] Wrap scores, timer id, and time variables into a game data class, use getter and setter
     - [ ] Error handling
 
 See the [open issues](https://github.com/yujhenchen/basketball-scoreboard/issues) for a full list of proposed features (and known issues).
@@ -312,9 +313,10 @@ Project Link: [https://github.com/yujhenchen/basketball-scoreboard](https://gith
 * [What is the default margin value of p tag?](https://stackoverflow.com/questions/20850594/what-is-the-default-margin-value-of-p-tag)
 * [[CSS] - How to remove the margin from a p element using CSS](https://www.shecodes.io/athena/44275-how-to-remove-the-margin-from-a-p-element-using-css)
 * [setInterval() global function](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)
-* [Scrimba](https://scrimba.com/)
 * [Animate.css](https://github.com/animate-css/animate.css)
 * [Places it’s tempting to use `display: none;`, but don’t](https://css-tricks.com/places-its-tempting-to-use-display-none-but-dont/)
+* [Scrimba](https://scrimba.com/)
+* [Singleton Pattern](https://www.patterns.dev/vanilla/singleton-pattern/)
 <!-- * [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet/tree/master) -->
 
 
