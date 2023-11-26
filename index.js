@@ -3,17 +3,7 @@
 import { PLAYER_NAME } from "./constants.js";
 import { CSS_LAYOUT_VALUE } from "./constants.js";
 import { buttonIdScoreMap } from "./constants.js";
-
-const gameData = {
-  homeScore: 0,
-  guestScore: 0,
-  defaultRemainingTime: 10,
-  timerInterval: 1000,
-  remainingTime: 10,
-  hasShownGameOverModel: false,
-  gameTimerID: -1,
-};
-Object.preventExtensions(gameData);
+import gameData from "./store.js";
 
 const homeScoreElement = document.getElementById("home-score");
 const guestScoreElement = document.getElementById("guest-score");
@@ -36,8 +26,9 @@ scoreButtons.forEach((button) => {
   const toAddScore = buttonIdScoreMap.get(idPartArray[idPartArray.length - 1]);
   const toAddPlayer = idPartArray[0];
   button.addEventListener("click", () => {
-    if (toAddPlayer === "home") gameData.homeScore += toAddScore;
-    else gameData.guestScore += toAddScore;
+    if (toAddPlayer === PLAYER_NAME.HOME.toLowerCase())
+      gameData.increaseHomeScore(toAddScore);
+    else gameData.increaseGuestScore(toAddScore);
     render();
   });
 });
@@ -45,6 +36,7 @@ scoreButtons.forEach((button) => {
 gameOverModelContainer.addEventListener("click", () => {
   gameOverModelContainer.style.top = CSS_LAYOUT_VALUE.OUT_OF_SCREEN;
   gameOverModelContainer.style.left = CSS_LAYOUT_VALUE.OUT_OF_SCREEN;
+  render();
 });
 
 newGameBtn.addEventListener("click", () => {
@@ -57,24 +49,14 @@ endGameBtn.addEventListener("click", () => {
   render();
 });
 
-function resetGameTimer() {
-  gameData.gameTimerID = setInterval(playGame, gameData.timerInterval);
-  return (isGameEnded = true) => {
-    clearInterval(gameData.gameTimerID);
-    if (!isGameEnded) {
-      gameData.gameTimerID = setInterval(playGame, gameData.timerInterval);
-    }
-  };
-}
-
-const endGameTimer = resetGameTimer();
+const endGameTimer = gameData.resetGameTimer(playGame);
 
 function playGame() {
-  gameData.remainingTime -= 1;
-  if (gameData.remainingTime === 0) {
-    if (!gameData.hasShownGameOverModel) {
+  gameData.decreaseRemainingTime();
+  if (gameData.getRemainingTime() === 0) {
+    if (!gameData.getHasShownGameOverModel()) {
       showGameOverModel();
-      gameData.hasShownGameOverModel = true;
+      gameData.setHasShownGameOverModel(true);
     }
     endGameTimer();
   }
@@ -82,27 +64,22 @@ function playGame() {
 }
 
 function newGame() {
-  cleanScores();
-  gameData.remainingTime = gameData.defaultRemainingTime;
+  gameData.resetScores();
+  gameData.resetRemainingTime();
   endGameTimer(false);
-  gameData.hasShownGameOverModel = false;
+  gameData.setHasShownGameOverModel(false);
 }
 
 function endGame() {
-  cleanScores();
-  gameData.remainingTime = 0;
+  gameData.resetScores();
+  gameData.clearRemainingTime();
   endGameTimer();
 }
 
-function cleanScores() {
-  gameData.homeScore = 0;
-  gameData.guestScore = 0;
-}
-
 function getWinnerText() {
-  return gameData.homeScore > gameData.guestScore
+  return gameData.getScore().home > gameData.getScore().guest
     ? PLAYER_NAME.HOME
-    : gameData.homeScore < gameData.guestScore
+    : gameData.getScore().home < gameData.getScore().guest
     ? PLAYER_NAME.GUEST
     : PLAYER_NAME.EVERYONE;
 }
@@ -114,8 +91,9 @@ function showGameOverModel() {
 }
 
 function render() {
-  homeScoreElement.textContent = gameData.homeScore;
-  guestScoreElement.textContent = gameData.guestScore;
-  remainingTimeElement.textContent = gameData.remainingTime;
+  homeScoreElement.textContent = gameData.getScore().home;
+  guestScoreElement.textContent = gameData.getScore().guest;
+  remainingTimeElement.textContent = gameData.getRemainingTime();
 }
+
 render();
