@@ -5,20 +5,13 @@ import { CSS_LAYOUT_VALUE } from "./constants.js";
 import { buttonIdScoreMap } from "./constants.js";
 import gameData from "./store.js";
 
-const homeScoreElement = document.getElementById("home-score");
-const guestScoreElement = document.getElementById("guest-score");
-const remainingTimeElement = document.getElementById("remaining-time");
-
-// buttons
-const newGameBtn = document.getElementById("new-game-btn");
-const endGameBtn = document.getElementById("end-game-btn");
-
-// model
-const gameOverModelContainer = document.getElementById(
-  "game-over-model-container"
-);
-const winnerSpan = document.getElementById("winner-span");
-
+const homeScore = document.querySelector("#home-score");
+const guestScore = document.querySelector("#guest-score");
+const remainingTime = document.querySelector("#remaining-time");
+const newGameButton = document.querySelector("#new-game-btn");
+const endGameButton = document.querySelector("#end-game-btn");
+const gameOverModel = document.querySelector("#game-over-model-container");
+const winnerText = document.querySelector("#winner-span");
 const scoreButtons = document.querySelectorAll("button[id*='-score-btn-']");
 
 scoreButtons.forEach((button) => {
@@ -33,18 +26,18 @@ scoreButtons.forEach((button) => {
   });
 });
 
-gameOverModelContainer.addEventListener("click", () => {
-  gameOverModelContainer.style.top = CSS_LAYOUT_VALUE.OUT_OF_SCREEN;
-  gameOverModelContainer.style.left = CSS_LAYOUT_VALUE.OUT_OF_SCREEN;
+gameOverModel.addEventListener("click", () => {
+  gameOverModel.style.top = gameOverModel.style.left =
+    CSS_LAYOUT_VALUE.OUT_OF_SCREEN;
   render();
 });
 
-newGameBtn.addEventListener("click", () => {
+newGameButton.addEventListener("click", () => {
   newGame();
   render();
 });
 
-endGameBtn.addEventListener("click", () => {
+endGameButton.addEventListener("click", () => {
   endGame();
   render();
 });
@@ -53,10 +46,10 @@ const endGameTimer = gameData.resetGameTimer(playGame);
 
 function playGame() {
   gameData.decreaseRemainingTime();
-  if (gameData.getRemainingTime() === 0) {
-    if (!gameData.getHasShownGameOverModel()) {
+  if (gameData.remainingTime === 0) {
+    if (!gameData.hasShownGameOverModel) {
       showGameOverModel();
-      gameData.setHasShownGameOverModel(true);
+      gameData.hasShownGameOverModel = true;
     }
     endGameTimer();
   }
@@ -67,7 +60,7 @@ function newGame() {
   gameData.resetScores();
   gameData.resetRemainingTime();
   endGameTimer(false);
-  gameData.setHasShownGameOverModel(false);
+  gameData.hasShownGameOverModel = false;
 }
 
 function endGame() {
@@ -77,23 +70,22 @@ function endGame() {
 }
 
 function getWinnerText() {
-  return gameData.getScore().home > gameData.getScore().guest
+  return gameData.scores.home > gameData.scores.guest
     ? PLAYER_NAME.HOME
-    : gameData.getScore().home < gameData.getScore().guest
+    : gameData.scores.home < gameData.scores.guest
     ? PLAYER_NAME.GUEST
     : PLAYER_NAME.EVERYONE;
 }
 
 function showGameOverModel() {
-  gameOverModelContainer.style.top = CSS_LAYOUT_VALUE.DEFAULT;
-  gameOverModelContainer.style.left = CSS_LAYOUT_VALUE.DEFAULT;
-  winnerSpan.textContent = getWinnerText();
+  gameOverModel.style.top = gameOverModel.style.left = CSS_LAYOUT_VALUE.DEFAULT;
 }
 
 function render() {
-  homeScoreElement.textContent = gameData.getScore().home;
-  guestScoreElement.textContent = gameData.getScore().guest;
-  remainingTimeElement.textContent = gameData.getRemainingTime();
+  homeScore.textContent = gameData.scores.home;
+  guestScore.textContent = gameData.scores.guest;
+  remainingTime.textContent = gameData.remainingTime;
+  winnerText.textContent = getWinnerText();
 }
 
 render();

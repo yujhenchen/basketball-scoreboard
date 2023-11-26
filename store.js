@@ -3,70 +3,79 @@
 let instance = null;
 
 class GameData {
-  #score;
-  #defaultRemainingTime;
-  #timerInterval;
-  #remainingTime;
-  #hasShownGameOverModel;
-  #gameTimerID;
+  #_scores;
+  #_defaultRemainingTime;
+  #_timerInterval;
+  #_remainingTime;
+  #_hasShownGameOverModel;
+  #_gameTimerID;
 
   constructor() {
     if (instance) {
       console.log("GameData object exists");
       return;
     }
-    this.#score = {
+    this.#_scores = {
       home: 0,
       guest: 0,
     };
-    this.#defaultRemainingTime = 10;
-    this.#timerInterval = 1000;
-    this.#remainingTime = 10;
-    this.#hasShownGameOverModel = false;
-    this.#gameTimerID = -1;
+    this.#_defaultRemainingTime = 10;
+    this.#_timerInterval = 1000;
+    this.#_remainingTime = 10;
+    this.#_hasShownGameOverModel = false;
+    this.#_gameTimerID = -1;
 
     instance = this;
   }
 
-  getScore = () => this.#score;
+  get scores() {
+    return this.#_scores;
+  }
+
+  get timerInterval() {
+    return this.#_timerInterval;
+  }
+
+  set remainingTime(time) {
+    this.#_remainingTime = time;
+  }
+
+  get remainingTime() {
+    return this.#_remainingTime;
+  }
+
+  set hasShownGameOverModel(shown) {
+    this.#_hasShownGameOverModel = shown;
+  }
+
+  get hasShownGameOverModel() {
+    return this.#_hasShownGameOverModel;
+  }
 
   resetScores = () => {
-    this.#score.home = 0;
-    this.#score.guest = 0;
+    this.#_scores.home = 0;
+    this.#_scores.guest = 0;
   };
 
-  increaseHomeScore = (score) => (this.#score.home += score);
+  increaseHomeScore = (score) => (this.#_scores.home += score);
 
-  increaseGuestScore = (score) => (this.#score.guest += score);
+  increaseGuestScore = (score) => (this.#_scores.guest += score);
 
-  getDefaultRemainingTime = () => this.#defaultRemainingTime;
+  resetRemainingTime = () =>
+    (this.#_remainingTime = this.#_defaultRemainingTime);
 
-  getTimerInterval = () => this.#timerInterval;
+  clearRemainingTime = () => (this.#_remainingTime = 0);
 
-  setRemainingTime = (time) => (this.#remainingTime = time);
-
-  getRemainingTime = () => this.#remainingTime;
-
-  resetRemainingTime = () => (this.#remainingTime = this.#defaultRemainingTime);
-
-  clearRemainingTime = () => (this.#remainingTime = 0);
-
-  setHasShownGameOverModel = (shown) => (this.#hasShownGameOverModel = shown);
-
-  getHasShownGameOverModel = () => this.#hasShownGameOverModel;
-
-  decreaseRemainingTime = () => (this.#remainingTime -= 1);
-
-  getGameTimerID = () => this.#gameTimerID;
+  decreaseRemainingTime = () => (this.#_remainingTime -= 1);
 
   resetGameTimer(func) {
-    this.#gameTimerID = setInterval(func, this.#timerInterval);
+    this.#_gameTimerID = setInterval(func, this.#_timerInterval);
     return (isGameEnded = true) => {
-      clearInterval(this.#gameTimerID);
-      //   console.log(`timer: ${this.#gameTimerID} is cleared`);
+      clearInterval(this.#_gameTimerID);
+      //   console.log(`timer: ${this.#_gameTimerID} is cleared`);
       if (!isGameEnded) {
-        this.#gameTimerID = setInterval(func, this.#timerInterval);
-        // console.log(`timer: ${this.#gameTimerID} is created`);
+        this.#_gameTimerID = setInterval(func, this.#_timerInterval);
+        // console.log(`timer: ${this.#_gameTimerID} is created`);
       }
     };
   }
