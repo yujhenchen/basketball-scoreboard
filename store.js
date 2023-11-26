@@ -8,7 +8,6 @@ class GameData {
   #_timerInterval;
   #_remainingTime;
   #_hasShownGameOverModel;
-  #_gameTimerID;
 
   constructor() {
     if (instance) {
@@ -23,7 +22,6 @@ class GameData {
     this.#_timerInterval = 1000;
     this.#_remainingTime = 10;
     this.#_hasShownGameOverModel = false;
-    this.#_gameTimerID = -1;
 
     instance = this;
   }
@@ -69,13 +67,11 @@ class GameData {
   decreaseRemainingTime = () => (this.#_remainingTime -= 1);
 
   resetGameTimer(func) {
-    this.#_gameTimerID = setInterval(func, this.#_timerInterval);
+    let timer = setInterval(func, this.#_timerInterval);
     return (isGameEnded = true) => {
-      clearInterval(this.#_gameTimerID);
-      //   console.log(`timer: ${this.#_gameTimerID} is cleared`);
+      clearInterval(timer);
       if (!isGameEnded) {
-        this.#_gameTimerID = setInterval(func, this.#_timerInterval);
-        // console.log(`timer: ${this.#_gameTimerID} is created`);
+        timer = setInterval(func, this.#_timerInterval);
       }
     };
   }
