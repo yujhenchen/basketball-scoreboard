@@ -32,12 +32,12 @@ main {
   padding-right: var(--small-size);
 }
 
-section {
+.vertical-container {
   display: flex;
   flex-direction: column;
 }
 
-.container-block {
+.block-container {
   place-content: space-around;
   flex: 1 1 auto;
   place-items: center;
@@ -58,8 +58,6 @@ section {
 }
 
 .timer-container {
-  display: flex;
-  flex-direction: column;
   font-size: var(--middle-size);
   font-weight: bold;
   padding: var(--small-size);
@@ -142,8 +140,6 @@ button {
   background-color: var(--score-background-color);
   color: var(--hero-text-color);
   padding: var(--middle-size);
-  display: flex;
-  flex-direction: column;
   place-items: center;
   justify-content: center;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
