@@ -155,8 +155,6 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Responsive web design (RWD)
 - [x] Popup winner animation after the game is ended (using Animate.css)
 - [ ] Disable score buttons after the game is over
-- [ ] Use ESLint and Stylelint
-- [ ] Add Unit tests
 - [ ] Refactor codes
     - [x] Remove duplicated codes in addEventListener
     - [x] Refactor end game and reset game codes for readability
